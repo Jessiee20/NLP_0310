@@ -1,0 +1,28 @@
+grammar = {
+    "S": [["NP", "VP"]],
+    "NP": [["Det", "N"]],
+    "VP": [["V", "NP"]],
+    "Det": [["the"], ["a"]],
+    "N": [["dog"], ["cat"]],
+    "V": [["chased"], ["saw"]]
+}
+def parse(symbol, words):
+    if not words:
+        return False, []
+    if symbol not in grammar:  
+        if words[0] == symbol:
+            return True, words[1:]
+        return False, words
+    for production in grammar[symbol]:
+        remaining = words
+        success = True
+        for sym in production:
+            success, remaining = parse(sym, remaining)
+            if not success:
+                break
+        if success:
+            return True, remaining
+        return False, words
+sentence = "the dog chased a cat".split()
+result, remaining = parse("S", sentence)
+print("Sentence Accepted" if result and not remaining else "Sentence Rejected")
