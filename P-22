@@ -1,0 +1,15 @@
+def resolve_references(text):
+    words = text.split()
+    resolved = []
+    last_noun = ""
+    for word in words:
+        if word.lower() in ["he", "she", "it", "they"]:
+            resolved.append(last_noun)
+        else:
+            resolved.append(word)
+            if word[0].isupper():
+                last_noun = word
+                return " ".join(resolved)
+text = "John went to the park. He enjoyed it."
+print("Original Text:", text)
+print("Resolved Text:", resolve_references(text))
