@@ -1,0 +1,14 @@
+def check_agreement(subject, verb):
+    singular_subjects = ["he", "she", "dog", "cat"]
+    singular_verbs = ["runs", "eats"]
+    4if subject in singular_subjects and verb in singular_verbs:
+        return True
+    elif subject not in singular_subjects and verb not in singular_verbs:
+        return True
+    else:
+        return False
+sentence = "dog runs".split()
+if check_agreement(sentence[0], sentence[1]):
+    print("Sentence is grammatically correct")
+else:
+    print("Subject-Verb agreement error")
