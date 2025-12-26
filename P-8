@@ -1,0 +1,22 @@
+from collections import defaultdict
+training_data = [
+    ("dog", "NOUN"),
+    ("cat", "NOUN"),
+    ("runs", "VERB"),
+    ("eats", "VERB"),
+    ("dog", "NOUN"),
+    ("runs", "VERB")
+]
+word_tag_freq = defaultdict(lambda: defaultdict(int))
+tag_freq = defaultdict(int)
+for word, tag in training_data:
+    word_tag_freq[word][tag] += 1
+    tag_freq[tag] += 1
+def stochastic_tagger(word):
+    if word in word_tag_freq:
+        return max(word_tag_freq[word], key=word_tag_freq[word].get)
+    return "NOUN"   # default tag
+sentence = ["dog", "runs", "fast"]
+print("Stochastic POS Tagging:")
+for word in sentence:
+    print(word, "→", stochastic_tagger(word))
