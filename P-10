@@ -1,0 +1,18 @@
+def initial_tagger(words):
+    return [(word, "NOUN") for word in words]
+def apply_rules(tagged_words):
+    transformed = []
+    for word, tag in tagged_words:
+        if word.endswith("ing"):
+            transformed.append((word, "VERB"))
+        else:
+            transformed.append((word, tag))
+    return transformed
+sentence = "Birds are flying high"
+words = sentence.split()
+initial_tags = initial_tagger(words)
+print("Initial Tags:", initial_tags)
+final_tags = apply_rules(initial_tags)
+print("After Transformation:")
+for word, tag in final_tags:
+    print(word, "→", tag)
