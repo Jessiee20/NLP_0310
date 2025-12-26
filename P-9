@@ -1,0 +1,17 @@
+import re
+def rule_based_tagger(word):
+    if re.match(r'.*ing$', word):
+        return "VERB"
+    elif re.match(r'.*ed$', word):
+        return "VERB"
+    elif re.match(r'.*ly$', word):
+        return "ADV"
+    elif re.match(r'.*s$', word):
+        return "NOUN"
+    else:
+        return "NOUN"
+sentence = "Dogs are running quickly"
+words = sentence.split()
+print("Rule-Based POS Tagging:")
+for word in words:
+    print(word, "→", rule_based_tagger(word))
