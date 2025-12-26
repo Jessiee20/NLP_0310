@@ -1,0 +1,10 @@
+def coherence_score(text):
+    sentences = text.lower().split(".")
+    score = 0
+    for i in range(len(sentences) - 1):
+        words1 = set(sentences[i].split())
+        words2 = set(sentences[i + 1].split())
+        score += len(words1.intersection(words2))
+    return score
+text = "NLP is interesting. NLP uses language models. Language models process text."
+print("Coherence Score:", coherence_score(text))
