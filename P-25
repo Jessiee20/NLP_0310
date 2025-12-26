@@ -1,0 +1,9 @@
+def gpt_text_generation(prompt):
+    responses = {
+        "Explain Natural Language Processing in simple terms.":
+        "Natural Language Processing helps computers understand and respond to human language."
+    }
+    return responses.get(prompt, "Generated text output.")
+prompt = "Explain Natural Language Processing in simple terms."
+print("Generated Text:")
+print(gpt_text_generation(prompt))
