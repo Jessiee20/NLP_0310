@@ -1,0 +1,9 @@
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+sentence = "The children are playing games"
+tokens = word_tokenize(sentence)
+print("Tokens:", tokens)
+lemmatizer = WordNetLemmatizer()
+lemmas = [lemmatizer.lemmatize(word) for word in tokens]
+print("Lemmatized Words:", lemmas)
